@@ -14,7 +14,7 @@ PHRASES = {
       "class %%% has-a function *** that takes self and @@@",
     "***.%%%()":
       "Set *** to an instance of class %%%.",
-    "***.***(@@@)"
+    "***.***(@@@)":
       "From *** get the *** function, call it with params self and @@@",
     "***.*** = '***'":
       "From *** get the *** attribute and set it to '***'."
@@ -27,8 +27,8 @@ else:
     PHRASE_FIRST = False
 
 # load up the words from the website
-for word in urlopen(WORD_URL).readline():
-    WORDS.append(str(word.strip(), encoding = "utf-8"))
+for word in urlopen(WORD_URL).readlines():
+    WORDS.append(str(word.strip(), encoding="utf-8"))
 
 
 def convert(snitppet, phrase):
@@ -40,7 +40,7 @@ def convert(snitppet, phrase):
 
     for i in range(0, snippet.count("@@@")):
         param_count = random.randint(1,3)
-        param_names.append(', ',join(
+        param_names.append(', '.join(
             random.sample(WORDS, param_count)))
 
     for sentence in snippet, phrase:
@@ -81,4 +81,3 @@ try:
             print(f"ANSWER: {answer}\n\n")
 except EOFError:
     print("\nBye")
-            
