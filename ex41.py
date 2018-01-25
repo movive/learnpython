@@ -8,11 +8,11 @@ WORDS = []
 PHRASES = {
     "class %%%(%%%):":
       "Make a class named %%% that is-a %%%.",
-    "class %%%(object):\n\tdef __init__(self, ***)":
-      "class %%% has- a __init__ that takes self and *** parameter)",
+    "class %%%(object):\n\tdef __init__(self, @@@)":
+      "class %%% has- a __init__ that takes self and @@@ parameter)",
     "class %%%(object):\n\t def ***(self, @@@)":
       "class %%% has-a function *** that takes self and @@@",
-    "***.%%%()":
+    "*** = %%%()":
       "Set *** to an instance of class %%%.",
     "***.***(@@@)":
       "From *** get the *** function, call it with params self and @@@",
@@ -45,7 +45,6 @@ def convert(snitppet, phrase):
 
     for sentence in snippet, phrase:
         result = sentence[:]
-
         # fake class class_names
         for word in class_names:
             result = result.replace("%%%", word, 1)
